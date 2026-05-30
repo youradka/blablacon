@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css');
+body{
+    background-color:rgb(255, 255, 255) ;
+    color: rgb(255, 255, 255);
+    font-family: "Pixelify Sans", sans-serif ;
+}
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+  color: white;
+}
+
+h1
+{
+    position: fixed ;
+    left: 30px;
+    top: 0px;
+}
+header
+{
+position: sticky;
+background-color:rgb(90, 93, 250);
+top: 0;
+height: 10px;
+padding: 10px 0;
+z-index: 999
+}
+#nav-list
+{
+    background-color: rgb(90, 93, 250) ;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap ;
+}
+.nav-ul
+{
+    position: relative;
+    display: inline;
+    top: -6px ;
+    margin-right: 200px;
+}
+.nav-text:hover
+{
+    color: rgb(43, 44, 112);
+}
+.nav-text
+{
+    color: #fff;
+}
+/* Výber jazyku */
+.jazyk-menu {
+    width: 140px;
+    text-align: center;
+    font-weight: bold;
+    top: 14px;
+    position: fixed;
+    color: black;
+    right: 100px;
+}
+.jazyk-menu .vybraty-jazyk {
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    line-height: 2;
+    cursor: pointer;
+    gap: 8px;
+    color: white;
+    padding-bottom: 10px;
+}
+.jazyk-menu .vybraty-jazyk:before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url('https://flagcdn.com/sk.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+}
+
+.jazyk-menu ul {
+    margin: 0;
+    padding: 0;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 140px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.jazyk-menu:hover ul,
+.jazyk-menu ul:hover {
+    display: block;
+    animation: fadeIn 0.15s ease-in;
+}
+
+/*@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}*/
+
+.jazyk-menu ul li {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jazyk-menu ul li a {
+    text-decoration: none;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: black;
+}
+
+.jazyk-menu ul li:hover {
+    background-color: #f2f2f2;
+}
+
+.jazyk-menu ul li a:before {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+}
+
+.sk:before {
+    background-image: url('https://flagcdn.com/sk.svg');
+}
+.en:before {
+    background-image: url('https://flagcdn.com/gb.svg');
+}
+
+.jazyk-menu:hover ul {
+    display: block;
+}
+/* Výber jazyku */
+
+.login-ul
+{
+    position: relative;
+     top: 30px;
+      border-radius: 25px;
+  background-color: rgb(90, 93, 250);
+  padding-left: 20px;
+  padding-right: 20PX;
+ left: 105px;
+ width: 160px;
+ height: 30px;
+    color: #fff;
+    text-align: center;
+    list-style-type: none;
+}
+
+.login-ul:hover
+{
+    background-color: rgb(43, 44, 112);
+}
+
+.login-ul a { 
+    display: block;
+    padding: 5px;
+}
+
+.registruj-ul a { 
+    display: block;
+    padding: 5px;
+}
+.registruj-ul
+{
+    position: relative;
+     top: -16px;
+      border-radius: 25px;
+  background-color: rgb(90, 93, 250);
+  padding-left: 20px;
+  padding-right: 20PX;
+ left: -30px;
+ width: 160px;
+ height: 30px;
+    color: #fff;
+    text-align: center;
+    list-style-type: none;
+}
+.registruj-ul:hover
+{
+    background-color: rgb(43, 44, 112);
+}
+
+footer
+{
+    position: sticky;
+    margin-top: 820px;
+    padding: 2px;
+    text-align: center;
+     background-color: rgb(90, 93, 250);
+}
+
+.forum {
+    max-width: 900px;
+    margin: 80px auto;
+    color: black;
+}
+
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.new-post-btn {
+    background: rgb(90,93,250);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.new-post {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.new-post input,
+.new-post textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+.post {
+    display: flex;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.vote {
+    text-align: center;
+    font-weight: bold;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.post-content h3 {
+    margin: 0;
+}
+
+.post-meta {
+    font-size: 0.8em;
+    color: gray;
+}
+
+.comments {
+    margin-top: 15px;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
+}
+
+.comment {
+    margin-bottom: 10px;
+}
+
+.comment-meta {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.comment-form input {
+    width: 80%;
+    padding: 5px;
+}
+
+.comment-form button {
+    padding: 5px 10px;
+}

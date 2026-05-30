@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style></style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='infostyle_en.css') }}">
+    <title>Information</title>
+</head>
+<header>
+        <h1 style="font-size:150%">Blablacon</h1>
+        
+        <nav id="nav-list">
+            <ul>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('homepage_en') }}">Home</a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('galeria_en') }}">Gallery </a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('forum_en') }}">Forum</a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('infopage_en') }}">Information</a></li> 
+            </ul>
+            <div class="jazyk-menu">
+                <div class="vybraty-jazyk">
+                    English
+                </div>
+                <ul>
+                    <li>
+                        <a href="" class="en">English</a>
+                    </li>
+                     <li>
+                        <a href="{{ url_for('infopage_sk') }}" class="sk">Slovenčina</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </nav>
+        {% if logged_in %}
+        <div style="position: absolute; top: 5px; right: 30px;">
+            {% if profile_pic %}
+                <img src="data:image/jpeg;base64,{{ profile_pic }}" alt="Profilovka" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+            {% endif %}
+        {% endif %}
+    </header>
+<body>
+    <main>
+        <h2>Contact information:</h2>
+        <ul class="Ada">
+        <li>Andrea Kmeťová</li> 
+        <li>youradka@gmail.com</li>
+        <li>+000000000000</li>
+        </ul>
+    </main>
+</body>
+<footer>Andrea Kmeťová</footer>
+</html>

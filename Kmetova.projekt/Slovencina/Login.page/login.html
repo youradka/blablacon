@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Prihlásenie</h2>
+
+    <a href="/Slovencina/forum.page/forum.html" class="back-button">← Naspäť</a>
+
+    <!-- action neskôr nastavíš na Python endpoint -->
+    <form method="POST" action="/login">
+
+        <label for="username">Používateľské meno alebo email</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Heslo</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Prihlásiť sa</button>
+    </form>
+
+    <p class="signup-link">
+        Nemáš účet? <a href="/Slovencina/registracka.page/signup.html">Zaregistruj sa</a>
+    </p>
+</div>
+
+</body>
+</html>

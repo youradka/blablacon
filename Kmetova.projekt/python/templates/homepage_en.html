@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style></style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homestyle_en.css') }}">
+    <title>Home</title>
+</head>
+<header>
+        <h1 style="font-size:280%">Blablacon</h1>
+        
+        <nav id="nav-list">
+            <ul>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('homepage_en') }}">Home</a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('galeria_en') }}">Gallery </a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('forum_en') }}">Forum</a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('infopage_en') }}">Information</a></li> 
+            
+            </ul>
+            <div class="jazyk-menu">
+                  <div class="vybraty-jazyk">
+                    English
+                </div>
+                <ul>
+                    <li>
+                        <a href="" class="en">English</a>
+                    </li>
+                     <li>
+                        <a href="{{ url_for('homepage_sk') }}" class="sk">Slovenčina</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% if logged_in %}
+        <div style="position: absolute; top: 20px; right: 30px;">
+            {% if profile_pic %}
+                <img src="data:image/jpeg;base64,{{ profile_pic }}" alt="Profilovka" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+            {% endif %}
+            <p style="color: white; margin-top: 5px; font-size: 12px; text-align: center;">Welcome!</p>
+        </div>
+    {% endif %}
+    </header>
+<body>
+    
+    <main>
+        <section class="onas">
+            <h2><strong>About us:</strong></h2>    
+    <p class="onas-text">Hello there! We are currently fictional anime convention and forum / blog where you can find your new favourite cosplayer or photographer. Make sure to check out other pages on this web and our socials!</p>
+        </section>
+    </main>
+    
+</body>
+<footer>Andrea Kmeťová</footer>
+</html>

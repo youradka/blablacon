@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css');
+body{
+    background-color:rgb(255, 255, 255) ;
+    color: rgb(90, 93, 250);
+    font-family: "Pixelify Sans", sans-serif ;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('/static/obrazky/loginobrazok.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background-color: #ffffff;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.signup-container label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.signup-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.signup-container input:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+.signup-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: rgb(90, 93, 250);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.signup-container button:hover {
+    background-color: rgb(60, 62, 192);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.login-link a {
+    color: rgb(60, 62, 192);
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.back-button {
+    position: fixed;     /* drží sa obrazovky */
+    top: 20px;
+    left: 20px;
+    
+    text-decoration: none;
+    background-color: rgb(90, 93, 250);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.back-button:hover {
+    background-color: rgb(60, 62, 192);
+}
+.popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+}
+
+.popup.success {
+    background-color: green;
+}
+
+.popup.error {
+    background-color: red;
+}

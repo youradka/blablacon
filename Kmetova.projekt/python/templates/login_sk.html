@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='loginstyle_sk.css') }}">
+</head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    <p class="{{ category }}">{{ message }}</p>
+  {% endfor %}
+{% endwith %}
+<div class="login-container">
+    <h2>Prihlásenie</h2>
+
+    <a href="{{ url_for('forum_sk') }}" class="back-button">← Naspäť</a>
+
+    <!-- action neskôr nastavíš na Python endpoint -->
+    <form method="POST" action="{{ url_for('login_user') }}">
+
+        <label for="username">Používateľské meno alebo email</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Heslo</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Prihlásiť sa</button>
+    </form>
+
+    <p class="signup-link">
+        Nemáš účet? <a href="{{ url_for('signup_sk') }}">Zaregistruj sa</a>
+    </p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style></style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='forumstyle_sk.css') }}">
+    <title>Fórum</title>
+</head>
+<header>
+        <h1 style="font-size:150%">Blablacon</h1>
+        <nav id="nav-list">
+            <ul>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('homepage_sk') }}">Domov</a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('galeria_sk') }}">Galéria </a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('forum_sk') }}">Fórum</a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('infopage_sk') }}">Informácie</a></li> 
+            
+            </ul>
+            <div class="jazyk-menu">
+                <div class="vybraty-jazyk">
+                    Slovenčina
+                </div>
+                <ul>
+                    <li>
+                        <a href="" class="sk">Slovenčina</a>
+                    </li>
+                     <li>
+                        <a href="{{ url_for('forum_en') }}" class="en">English</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </nav>
+        {% if logged_in %}
+        <div style="position: absolute; top: 5px; right: 30px;">
+            
+        </div>
+    {% endif %}
+    {% if logged_in %}
+        <div style="position: absolute; top: 5px; right: 30px; display: flex; align-items: center; gap: 15px;">
+            {% if profile_pic %}
+                <img src="data:image/jpeg;base64,{{ profile_pic }}" alt="Profilovka" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+            {% endif %}
+            <a href="{{ url_for('logout') }}" style="color: white; text-decoration: none; background-color: #ff4d4d; padding: 8px 12px; border-radius: 5px; font-weight: bold; font-size: 14px; transition: 0.3s;">
+                Odhlásiť sa
+            </a>
+            
+        </div>
+        {% else %}
+        <div style="position: absolute; top: 20px; right: 30px;">
+            <a href="{{ url_for('login_sk') }}" style="color: white; text-decoration: none; background-color: #4CAF50; padding: 8px 12px; border-radius: 5px; font-weight: bold; font-size: 14px; transition: 0.3s;">
+                Prihlásiť sa
+            </a>
+        </div>
+        {% endif %}
+    </header>
+<body>
+    <main>
+
+        
+
+   {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="popup {{ category }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<script>
+setTimeout(() => {
+    const popup = document.querySelector('.popup');
+    if (popup) popup.style.display = 'none';
+}, 3000);
+</script>
+
+    <section class="forum">
+
+    <div class="board-header">
+        <h2>/anime/ – Anime & Manga</h2>
+    </div>
+
+    {% if logged_in %}
+    <form class="new-post" method="POST" action="{{ url_for('pridaj_prispevok') }}">
+        <input type="text" name="nazov" placeholder="Názov príspevku" required>
+        <textarea name="obsah" placeholder="Obsah príspevku..." required></textarea>
+        <button type="submit">Odoslať</button>
+    </form>
+    {% else %}
+    <p style="text-align: center; color: white;">Pre pridanie príspevku sa <a href="{{ url_for('login_sk') }}" style="color: #4CAF50;">prihlás</a>.</p>
+    {% endif %}
+
+    <div style="text-align: center; margin: 30px 0;">
+        <input type="text" id="forumSearch" placeholder="🔍 Hľadať v príspevkoch (podľa názvu alebo obsahu)..." style="padding: 10px 15px; width: 60%; max-width: 500px; border-radius: 20px; border: 1px solid #555; background-color: #222; color: white; font-size: 16px; outline: none;">
+    </div>
+
+    {% for post in posts %}
+    <article class="post">
+        
+        <div class="vote" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            
+            <form method="POST" action="{{ url_for('hlasuj', idposty=post.idposty, akcia='up') }}" style="margin: 0;">
+                <button type="submit" style="background: none; border: none; color: #4CAF50; cursor: pointer; font-size: 20px; transition: 0.2s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'" title="Páči sa mi to">
+                    ▲
+                </button>
+            </form>
+            
+            <span style="font-weight: bold; font-size: 16px; margin: 5px 0;">{{ post.plikes }}</span>
+            
+            <form method="POST" action="{{ url_for('hlasuj', idposty=post.idposty, akcia='down') }}" style="margin: 0;">
+                <button type="submit" style="background: none; border: none; color: #ff4d4d; cursor: pointer; font-size: 20px; transition: 0.2s;" onmouseover="this.style.transform='scale(1.3)'" onmouseout="this.style.transform='scale(1)'" title="Nepáči sa mi to">
+                    ▼
+                </button>
+            </form>
+            
+        </div>
+
+        <div class="post-content">
+            <h3>{{ post.nazov }}</h3>
+            <p>{{ post.obsah }}</p>
+            <span class="post-meta">{{ post.autor }} • {{ post.pdatum.strftime('%d.%m.%Y %H:%M') if post.pdatum else '' }}</span>
+            {% if session.get('username') == post.autor %}
+            <form method="POST" action="{{ url_for('vymaz_prispevok', idposty=post.idposty) }}" style="display: inline-block; margin-left: 10px;">
+                <button type="submit" style="background-color: #ff4d4d; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 12px;" onclick="return confirm('Naozaj chceš vymazať tento príspevok?');">
+                    Vymazať
+                </button>
+            </form>
+            {% endif %}
+
+            <div class="comments">
+                
+                {% for koment in post.komentare %}
+                <div class="comment">
+                    <span class="comment-meta">{{ koment.autor }} ({{ koment.datum.strftime('%d.%m.%Y %H:%M') if koment.datum else '' }})</span>
+                    <p>{{ koment.obsah }}</p>
+                </div>
+                {% endfor %}
+
+                {% if logged_in %}
+                <form class="comment-form" method="POST" action="{{ url_for('pridaj_komentar', idposty=post.idposty) }}">
+                    <input type="text" name="kobsah" placeholder="Napíš komentár..." required>
+                    <button type="submit">Odpovedať</button>
+                </form>
+                {% endif %}
+                
+            </div>
+        </div>
+    </article>
+    {% else %}
+    <p style="text-align: center; color: white; padding: 20px;">Zatiaľ tu nie sú žiadne príspevky. Buď prvý!</p>
+    {% endfor %}
+
+</section>
+    </main>    
+</body>
+HTML
+
+<script>
+document.getElementById('forumSearch').addEventListener('input', function(e) {
+    // Získame text, ktorý používateľ napísal, a zmeníme ho na malé písmená
+    const filterText = e.target.value.toLowerCase();
+    
+    // Nájdeme všetky príspevky na stránke (tag <article> s triedou "post")
+    const posts = document.querySelectorAll('article.post');
+    
+    posts.forEach(function(post) {
+        // Získame nadpis (h3) a obsah príspevku (prvý <p> vo vnútri .post-content)
+        // Použijeme voliteľné reťazenie (?), aby skript nespadol, ak nejaký tag chýba
+        const title = post.querySelector('h3')?.textContent.toLowerCase() || "";
+        const content = post.querySelector('.post-content > p')?.textContent.toLowerCase() || "";
+        
+        // Ak názov alebo obsah obsahuje hľadaný text, príspevok ukážeme, inak ho skryjeme
+        if (title.includes(filterText) || content.includes(filterText)) {
+            post.style.display = 'block'; // Zobrazí príspevok (alebo 'flex', ak v CSS používaš flexbox)
+        } else {
+            post.style.display = 'none'; // Skryje príspevok
+        }
+    });
+});
+</script>
+<footer>Andrea Kmeťová</footer> 
+</html>

@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css');
+body{
+    background-color:rgb(255, 255, 255) ;
+    color: rgb(255, 255, 255);
+    font-family: "Pixelify Sans", sans-serif ;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+  color: white;
+}
+
+h1
+{
+    position: fixed ;
+    top: 3px;
+    left: 30px;
+}
+header
+{
+background-color:rgb(90, 93, 250);
+height: 140px;
+padding: 10px 0;
+top: 20px;
+}
+#nav-list
+{
+    background-color: rgb(90, 93, 250) ;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap ;
+    /*width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;*/  
+}
+.nav-ul
+{
+    display: inline;
+    margin-right: 200px;
+    position: relative;
+    top: 20px;
+}
+.nav-text:hover
+{
+    color: rgb(43, 44, 112);
+}
+.nav-text
+{
+    color: #fff;
+}
+
+/* Výber jazyku */
+
+.jazyk-menu {
+    width: 140px;
+    text-align: center;
+    font-weight: bold;
+    top: 41px;
+    position: fixed;
+    color: black;
+    right: 100px;
+}
+.jazyk-menu .vybraty-jazyk {
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    line-height: 2;
+    cursor: pointer;
+    gap: 8px;
+    color: white;
+    padding-bottom: 10px;
+}
+.jazyk-menu .vybraty-jazyk:before {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    background-image: url('https://flagcdn.com/gb.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+}
+
+.jazyk-menu ul {
+    margin: 0;
+    padding: 0;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 140px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.jazyk-menu:hover ul,
+.jazyk-menu ul:hover {
+    display: block;
+    animation: fadeIn 0.15s ease-in;
+}
+
+/*@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}*/
+
+.jazyk-menu ul li {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jazyk-menu ul li a {
+    text-decoration: none;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: black;
+}
+
+.jazyk-menu ul li:hover {
+    background-color: #f2f2f2;
+}
+
+.jazyk-menu ul li a:before {
+    content: '';
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+}
+
+.sk:before {
+    background-image: url('https://flagcdn.com/sk.svg');
+}
+.en:before {
+    background-image: url('https://flagcdn.com/gb.svg');
+}
+/* Výber jazyku */
+.jazyk-menu:hover ul {
+    display: block;
+}
+
+h2
+{
+    left: 20px;
+    position: fixed;
+     top: 120px;
+      border-radius: 25px;
+  background-color: #ffffff;
+  padding-left: 17px;
+  padding-top: 7px;
+  height: 40px;
+  width: 145px;
+    color:rgb(90, 93, 250);
+    
+
+}
+
+.onas-text
+{
+    left: 20px;
+    position: fixed; /*Toto som zmenila */
+    top: 170px;
+     border-radius: 25px;
+  background-color: #ffffff;
+  padding: 20px;
+  height: 60px;
+  width: 1650px;
+    color:rgb(90, 93, 250);
+}
+
+main
+{
+    margin-top: -20px;
+    background-image: url("/obrazky/cosbackground2fi1.jpg");
+    height: 830px;
+
+}
+footer
+{
+    margin-top: -18px;
+    padding: 2px;
+    text-align: center;
+     background-color: rgb(90, 93, 250);
+}

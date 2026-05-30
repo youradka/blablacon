@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style></style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='homestyle_sk.css') }}">
+    <title>Domov</title>
+</head>
+<header>
+        <h1 style="font-size:280%">Blablacon</h1>
+        
+        <nav id="nav-list">
+            <ul>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('homepage_sk') }}">Domov</a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('galeria_sk') }}">Galéria </a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('forum_sk') }}">Fórum</a></li>
+            <li class="nav-ul"><a class=" nav-text" href="{{ url_for('infopage_sk') }}">Informácie</a></li> 
+            
+            </ul>
+            <div class="jazyk-menu">
+                <div class="vybraty-jazyk">
+                    Slovenčina
+                </div>
+                <ul>
+                    <li>
+                        <a href="" class="sk">Slovenčina</a>
+                    </li>
+                     <li>
+                        <a href="{{ url_for('homepage_en') }}" class="en">English</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </nav>
+        {% if logged_in %}
+        <div style="position: absolute; top: 20px; right: 30px;">
+            {% if profile_pic %}
+                <img src="data:image/jpeg;base64,{{ profile_pic }}" alt="Profilovka" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid white;">
+            {% endif %}
+            <p style="color: white; margin-top: 5px; font-size: 12px; text-align: center;">Vitaj!</p>
+        </div>
+    {% endif %}
+    </header>
+<body>
+    
+    <main>
+        <section class="onas">
+            <h2><strong>O nás:</strong></h2>    
+    <p class="onas-text">Sme aktualne fiktívny anime convention a forum / blog na nájdenie tvojho nového obľúbeného cosplayera alebo fotografa! Neváhaj teda pozrieť sa na ostatné sekcie tejto stránky. PS: Ďakujem všetkým čo mi poskytli fotky na background </p>
+        </section>
+    </main>
+    
+</body>
+<footer>Andrea Kmeťová</footer>
+</html>
